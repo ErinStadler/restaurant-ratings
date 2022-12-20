@@ -1,6 +1,6 @@
 """Restaurant rating lister."""
 
-
+import random
 # put your code here
 
 #define function here:
@@ -21,10 +21,23 @@ def read_restaurant_ratings(filename):
     #prompt user input after for loop 
     
     user_restaurant = input("(enter '0' to exit) What is your restaurant name? ")
-    if user_restaurant is not '0': 
-        user_score = input("(enter '0' to exit) What is the restaurant rating? ")
-        if user_score is not '0':
-            restaurant_scores[user_restaurant] = int(user_score)
+    if user_restaurant != '0': 
+        # if user_score != '0':
+        while True:
+            try: 
+                user_score = int(input("(enter '0' to exit) What is the restaurant rating from 1 to 5? "))
+                if user_score in range (1, 6):
+                    break
+                else:
+                    print("The number you input is not between 1 and 5. Try again")
+            except: 
+                print("Please type in a number!")
+
+    # user_score = int(input("(enter '0' to exit) What is the restaurant rating from 1 to 5? "))
+    # if user_score > 5 or user_score < 1:
+    #    raise Exception("Sorry, no numbers below 1 or above 5.")
+        restaurant_scores[user_restaurant] = int(user_score)
+    
 
     # if user_restaurant == 0:
     #     del restaurant_scores[user_restaurant]
@@ -50,5 +63,3 @@ print(read_restaurant_ratings("scores.txt"))
     #file.close()?
 
 #call function with files:
-
-
